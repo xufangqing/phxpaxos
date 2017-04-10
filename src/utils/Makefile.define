@@ -17,7 +17,8 @@
 # 
 # See the AUTHORS file for names of contributors. 
 
-allobject=libutils.a test_notifier_pool 
+allobject=libutils.a
+# test_notifier_pool 
 
 UTILS_OBJ=concurrent.o socket.o util.o crc32.o timer.o bytes_buffer.o serial_lock.o wait_lock.o notifier_pool.o
 

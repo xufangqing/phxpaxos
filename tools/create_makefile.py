@@ -134,7 +134,8 @@ def PrintReferenceDIR(target_name, direct_inc_name):
 
 def PrintLib(path, target_name, lib_name, export = False):
 	(obj_name,inc_name, direct_inc_name, extra_cpp_flag_name) = PrintComm(path, target_name, lib_name)
-
+	print("$$$$$$$$$$$$$$$$$$$$$$$$$$$$PrintLib infos:")
+	print("%s-1-%s-2-%s-3%s" % (obj_name,inc_name, direct_inc_name, extra_cpp_flag_name))
 	if(export == True):
 		makefile.write("lib_%s: %s_dir %s/lib%s.a %s/lib%s.a\n\n" % (target_name, target_name, lib_path, target_name, ext_lib_path, target_name))
 		clean_dir.append( "%s/lib%s.a" % (lib_path, target_name))
@@ -230,6 +231,7 @@ def PrintMakeAllSubDir(dir_list, clean_lib=False):
 		makefile.write("\trm -rf *.o *.pb.* %s " % ' '.join(clean_dir));
 
 def Process(path, library_list, elibrary_list, binary_list):
+	print(">>>>>>>>>>>>>>>>>>>>>>>>%s<<<<<" % path)
 	for lib in library_list:
 		if(len(lib) == 0):
 			continue
@@ -261,6 +263,7 @@ def CreateMakeFile(path):
 	makefile_define_path = "%s/%s" % (path, include_makefile_name)
 	makefile_path = "%s/%s" % (path, makefile_name)
 
+	print(makefile_path)
 	makefile = open(makefile_path, "w");
 	makefile.write("SRC_BASE_PATH=%s\n\n" % base_path) 
 	if(os.path.exists(makefile_define_path)):
@@ -288,6 +291,10 @@ def CreateMakeFile(path):
 		finally:
 			define_makefile_file.close()
 
+	print("list info:")
+	print(library_list)
+	print(elibrary_list)
+	print(binary_list)
 	makefile.write("all:");
 	if( lib_count > 0 ):
 		for lib in library_list:

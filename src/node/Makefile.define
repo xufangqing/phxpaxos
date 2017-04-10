@@ -17,7 +17,8 @@
 # 
 # See the AUTHORS file for names of contributors. 
 
-allobject=libnode.a test_propose_batch 
+allobject=libnode.a 
+#test_propose_batch 
 
 NODE_OBJ=group.o pnode.o node.o propose_batch.o
 
